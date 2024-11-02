@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaRegStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const Book = ({ book }) => {
-    const { publisher, tags, category, rating, totalPages, review, image, author, bookName } = book;
+    const { publisher, tags, category, rating, totalPages, review, image, author, bookName,bookId } = book;
     return (
-        <div className="card bg-base-100 border-2 rounded-xl">
+       <Link to={`/books/${bookId}`}>
+         <div className="card bg-base-100 border-2 rounded-xl">
             <div className="p-5">
                 <div className=" p-20 py-8 bg-[rgb(243,243,243)] rounded-xl flex justify-center items-center">
 
@@ -33,6 +35,8 @@ const Book = ({ book }) => {
             </div>
 
         </div>
+       </Link>
+       
     )
 }
 
