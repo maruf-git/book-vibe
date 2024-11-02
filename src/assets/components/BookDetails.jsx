@@ -1,12 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLoaderData, useParams } from 'react-router-dom'
+import { setStoredReadList, setStoredWishList } from '../../utils/addToDb';
 
 const BookDetails = () => {
     const { bookId } = useParams();
     const books = useLoaderData();
     const currentBook = books.find((book) => book.bookId === parseInt(bookId));
     const { bookName, author, image, category, tags, review, rating, publisher, yearOfPublishing, totalPages } = currentBook
+
+    // handle mark as read
+    const handleMarkAsRead = () => {
+        setStoredReadList(bookId);
+
+    }
+    // handle wishlist
+    const handleWishlist = () => {
+        setStoredWishList(bookId);
+    }
     return (
         <div className=" flex flex-col lg:flex-row gap-5 mt-10 mb-20">
             <div className="py-20 px-32 bg-gray-300 flex justify-center items-center ">
@@ -35,31 +46,31 @@ const BookDetails = () => {
                             <tr>
                                 {/* <th>1</th> */}
                                 <td className=" pl-0">Number of Pages : </td>
-                                <td  className=" pl-0 font-bold">{totalPages}</td>
-                             
+                                <td className=" pl-0 font-bold">{totalPages}</td>
+
                             </tr>
                             {/* row 2 */}
                             <tr>
                                 {/* <th>2</th> */}
-                                <td  className=" pl-0">Publisher : </td>
-                                <td  className=" pl-0 font-bold">{publisher}</td>
-                               
+                                <td className=" pl-0">Publisher : </td>
+                                <td className=" pl-0 font-bold">{publisher}</td>
+
                             </tr>
                             {/* row 3 */}
                             <tr>
-                                <td  className=" pl-0">Year of Publishing : </td>
-                                <td  className=" pl-0 font-bold">{yearOfPublishing}</td>
+                                <td className=" pl-0">Year of Publishing : </td>
+                                <td className=" pl-0 font-bold">{yearOfPublishing}</td>
                             </tr>
                             <tr>
                                 {/* <th>3</th> */}
-                                <td  className=" pl-0">Rating : </td>
-                                <td  className=" pl-0 font-bold">{rating}</td>
+                                <td className=" pl-0">Rating : </td>
+                                <td className=" pl-0 font-bold">{rating}</td>
                             </tr>
                         </tbody>
                     </table>
                     <div className="flex gap-3 mt-5">
-                        <button className="btn btn-outline">Read</button>
-                        <button className="btn text-white bg-[rgb(80,177,201)] border-[rgb(80,177,201)]">Wishlist</button>
+                        <button className="btn btn-outline" onClick={handleMarkAsRead}>Read</button>
+                        <button className="btn text-white bg-[rgb(80,177,201)] border-[rgb(80,177,201)]" onClick={handleWishlist}>Wishlist</button>
                     </div>
                 </div>
             </div>

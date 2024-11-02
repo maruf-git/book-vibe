@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Footer = props => {
     return (
-        <footer className=" bg-base-300  py-10 ">
+        <footer className=" bg-base-300  py-10">
             <div className=" footer text-base-content max-w-screen-xl mx-auto">
                 <nav>
                     <h6 className="footer-title">Services</h6>
