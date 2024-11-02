@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Hero from './Hero'
+import Books from './Books'
 
 const Home = props => {
   return (
-    <div>
-        Welcome to home
+    <div className="mt-10 mb-20">
+        <Hero></Hero>
+        <Books></Books>
     </div>
   )
 }
